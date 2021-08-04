@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+     <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+    <title>Scuba Diving</title>
+    <style>
+      .row{
+        margin: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+    <div class="row" style="margin-top: 20px;">
+        <h3 style="text-align: center;">
+            กรอกแบบฟอร์มร่วมกิจกรรมดำน้ำ
+        </h1>
+    </div>
+
+    <div class="row" style="margin:20px;">
+      <div class="col-4"></div>
+      <div class="col-4">
+          <label style="font-weight: bolder;">บัตรประชาชน</label>
+          <div class="input-group">
+              <input id="txtIDCard" name="txtIDCard" type="text" class="form-control"  aria-label="IDCard" aria-describedby="basic-addon1">
+            </div>
+      </div>
+      <div class="col-4"></div>
+  </div>
+
+    <div class="row" style="margin:20px;">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <label style="font-weight: bolder;">ชื่อ</label>
+            <div class="input-group">
+                <input id="txtUsername" name="txtUsername" type="text" class="form-control"  aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+    <div class="row" style="margin:20px;">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <label style="font-weight: bolder;">นามสกุล</label>
+            <div class="input-group">
+                <input id="txtLastname" name="txtLastname" type="text" class="form-control"  aria-label="Lastname" aria-describedby="basic-addon2">
+              </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+    <div class="row" style="margin:20px;">
+        <div class="col-4"></div>
+        <div class="col-2">
+            <label style="font-weight: bolder;">อายุ</label>
+            <select id="ddlAge" name="ddlAge" class="form-select" aria-label="Default select example">
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+              </select>
+        </div>
+        <div class="col-2">
+            <label style="font-weight: bolder;">เพศ</label>
+            <div class="input-group">
+                <div class="form-check" style="margin-right: 20px;">
+                    <input  class="form-check-input" type="radio" name="sex" value="Male" id="radioM" checked>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Male(ชาย)
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="sex" value="Female" id="radioW">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Female(หญิง)
+                    </label>
+                  </div>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+    <div class="row" style="margin:20px;">
+        <div class="col-4"></div>
+        <div class="col-2">
+            <label style="font-weight: bolder;">เบอร์โทรศัพท์</label>
+            <div class="input-group">
+                <input id="txtPhone" name="txtPhone" type="text" class="form-control"  aria-label="Phone" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="col-2">
+            <label style="font-weight: bolder;">ID Line</label>
+            <div class="input-group">
+                <input id="txtLine" name="txtLine" type="text" class="form-control"  aria-label="Line" aria-describedby="basic-addon1">
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <hr style="width: 100%;" />
+        </div>
+        <div class="col-3"></div>
+    </div>
+   
+
+    <div class="row" style="margin:20px;">
+        <div class="col-4"></div>
+        <div class="col-2">
+            <button id="btnCancle" value="Cancle" type="button" class="btn btn-outline-secondary" style="width: 100%;">ยกเลิก</button>
+        </div>
+        <div class="col-2">
+            <button id="btnSubmit" value="Add" onclick="save()" type="button" class="btn btn-success" style="width: 100%;">บันทึก</button>
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+
+    <br><br>
+    
+    
+    <div  class="row">
+       <div class="col-3"></div>
+       <div class="col-6 ">
+        <table id="divShowTable" class="table table-primary table-striped">
+            <thead>
+                <tr>
+                  <th></th>
+                  <th scope="col">เลขบัตรประชาชน</th>
+                  <th scope="col">ชื่อ</th>
+                  <th scope="col">นามสกุล</th>
+                  <th scope="col">อายุ</th>
+                  <th scope="col">เพศ</th>
+                  <th scope="col">เบอร์โทรศัพท์</th>
+                  <th scope="col">ID Line</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                  
+              </tbody>
+        </table>
+       </div>
+    <div class="col-3"></div> 
+    </div>
+    </div>
+
+   
+    <!-- Modal -->
+    <div class="modal" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="text-align: center;">
+            <h5 class="modal-title">แก้ไขข้อมูล</h5>
+            <button type="button" class="closeModal" style="  background-color: transparent; border-color: transparent;
+             font-size: 26px; padding: 0; color: gray;" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-12 input-group">
+                <label class="col-3">เลขบัตรประชาชน</label>
+                <input id="editIDCard" type="text" name="editIDCard" class="form-control col-9"  aria-label="IDCard" aria-describedby="basic-addon">
+              </div>
+            </div>
+           <div class="row">
+             <div class="col-12 input-group">
+               <label class="col-3">ชื่อ</label>
+               <input id="editUsername" type="text" name="editUsername" class="form-control col-9"  aria-label="Username" aria-describedby="basic-addon1">
+             </div>
+           </div>
+           <div class="row">
+            <div class="col-12 input-group">
+              <label class="col-3">นามสกุล</label>
+              <input id="editLastname" type="text" name="editLastname" class="form-control col-9"  aria-label="Lastname" aria-describedby="basic-addon2">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 input-group">
+              <label class="col-3">อายุ</label>
+              <select id="editAge" name="editAge" class="form-select col-9" aria-label="Default select example">
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 input-group">
+              <label class="col-3">เพศ</label>
+                <div class="form-check col-2" style="margin-right: 50px;">
+                    <input  class="form-check-input" type="radio" name="editsex" value="Male" id="editM"ื>
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Male(ชาย)
+                    </label>
+                  </div>
+                  <div class="form-check col-2">
+                    <input class="form-check-input" type="radio" name="editsex" value="Female" id="editW">
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      Female(หญิง)
+                    </label>
+                  </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 input-group">
+              <label class="col-3">เบอร์โทรศัพท์</label>
+              <input id="editPhone" type="text" name="editPhone" class="form-control col-9"  aria-label="Phone" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 input-group">
+              <label class="col-3">Id Line</label>
+              <input id="editLine" type="text" name="editLine" class="form-control col-9"  aria-label="Line" aria-describedby="basic-addon1">
+            </div>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="closeModal btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" onclick="saveEdit()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- End Modal -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <!-- นำเข้า  CSS จาก dataTables -->
+		<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+		<!-- นำเข้า  Javascript จาก  Jquery -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<!-- นำเข้า  Javascript  จาก   dataTables -->
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+
+    
+    <script> 
+    var information = [];
+    
+      
+    //fn Save
+    function save() {
+        // ใส่ object ไว้ใน Array information
+        information.push({
+        idcard : $('#txtIDCard').val(),
+        username : $('#txtUsername').val(),
+        lastname : $('#txtLastname').val(),
+        age : $('#ddlAge').val(),
+        checkSex : $('input[name="sex"]:checked').val(),
+        phone : $('#txtPhone').val(),
+        idline : $('#txtLine').val()
+      });
+      ShowTable()
+    }
+
+    function ShowTable() {
+      $('#divShowTable').DataTable({ // show data in datatable
+        "destroy" : true, // ลบค่าเก่าออก
+        "data" : information,
+        "columns" : [
+        {
+                data: null,
+                className: "dt-center editor-edit",
+                defaultContent: '<i class="fa fa-pencil-square" aria-hidden="true" style="color:#207FFF;font-size:20px;"></i>',
+                orderable: false
+            },
+            {data : 'idcard'},
+            {data : 'username'},
+            {data : 'lastname'},
+            {data : 'age'},
+            {data : 'checkSex'},
+            {data : 'phone'},
+            {data : 'idline'}, 
+            {
+                data: null,
+                className: "dt-center editor-delete",
+                defaultContent: '<i class="fa fa-trash" aria-hidden="true" style="color:#D51D1D;font-size:20px;"></i>',
+                orderable: false 
+            }
+            ]
+        });
+    }
+    
+    
+    // edit Data
+    var edit = [];
+    function saveEdit() {
+      //  วิธี filter
+      // information = information.filter(f => f.idcard !== $('#editIDCard').val())
+      //   information.push({
+      //   idcard : $('#editIDCard').val(),
+      //   username : $('#editUsername').val(),
+      //   lastname : $('#editLastname').val(),
+      //   age : $('#editAge').val(),
+      //   checkSex : $('input:radio[name=editsex]:checked').val(),
+      //   phone : $('#editPhone').val(),
+      //   idline : $('#editLine').val()
+      // });
+
+
+        for (let i = 0; i < information.length; i++) {
+          debugger
+          if ($('#txtIDCard').val() == information[i].idcard) {
+            information[i].username = $('#editUsername').val();
+            information[i].lastname = $('#editLastname').val();
+            information[i].age = $('#editAge').val();
+            information[i].checkSex = $('input:radio[name=editsex]:checked').val();
+            information[i].phone = $('#editPhone').val();
+            information[i].idline = $('#editLine').val();
+          }
+        }
+      
+      $("#myModal").modal('hide');
+      ShowTable();
+    }
+
+        // closeModal
+        $(".closeModal").click(function(){
+            $("#myModal").modal('hide');
+        });
+
+        
+        // popup edit
+        $('#divShowTable').on('click', 'td.editor-edit', function () {
+        var myModal = $('#modal-Edit');
+        var txtIDCard = $(this).closest("tr").find("td:eq(1)").html();
+        var txtUsername = $(this).closest("tr").find("td:eq(2)").html();
+        var txtLastname = $(this).closest("tr").find("td:eq(3)").html();
+        var ddlAge = $(this).closest("tr").find("td:eq(4)").html();
+        var sex = $(this).closest("tr").find("td:eq(5)").html();
+        var txtPhone = $(this).closest("tr").find("td:eq(6)").html();
+        var txtLine = $(this).closest("tr").find("td:eq(7)").html();
+        
+        $('#editIDCard').val(txtIDCard).prop('disabled',true);
+        $('#editUsername').val(txtUsername);
+        $('#editLastname').val(txtLastname);
+        $('#editAge').val(ddlAge);
+
+        var $radios = $('input:radio[name=editsex]');
+        if (sex == 'Male') {
+            $radios.filter('[value=Male]').prop('checked', true);
+        }
+        else{
+            $radios.filter('[value=Female]').prop('checked', true);
+        }
+
+        $('#editPhone').val(txtPhone);
+        $('#editLine').val(txtLine);
+        $("#myModal").modal("show");
+        });
+
+
+        $('#divShowTable').on('click', 'td.editor-delete', function () {
+            //  วิธี filter
+            txtIDCard = $(this).closest("tr").find("td:eq(1)").html();
+            information = information.filter(f => f.idcard !== txtIDCard)
+            ShowTable();
+        });
+
+    
+
+    // แบบ list
+    // for (let i = 0; i < information.length; i++) {
+    //     var showTable = document.getElementById('divShowTable');
+    //     var newRow = showTable.insertRow();
+
+    //     var Cusername = newRow.insertCell(0);
+    //     var Clastname = newRow.insertCell(1);
+    //     var Cage = newRow.insertCell(2);
+    //     var CcheckSex = newRow.insertCell(3);
+    //     var Cphone = newRow.insertCell(4);
+    //     var Cidline = newRow.insertCell(5);
+       
+    //     Cusername.innerHTML = information[i].username;
+    //     Clastname.innerHTML = information[i].lastname;
+    //     Cage.innerHTML = information[i].age;
+    //     Cidline.innerHTML = information[i].idline;
+    //     Cphone.innerHTML = information[i].phone;
+    //     CcheckSex.innerHTML = information[i].checkSex;
+    // }
+</script>
+</body>
+</html>
+
+
